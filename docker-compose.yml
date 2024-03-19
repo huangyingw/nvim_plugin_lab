@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  nvim_plugin_lab:
+    build: .
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    tty: true
+    stdin_open: true
+    # 如果你需要将容器的端口映射到宿主机，可以按照下面的格式添加ports配置
+    # ports:
+    #   - "8888:8888" # 例子: 将容器的8888端口映射到宿主机的8888端口
