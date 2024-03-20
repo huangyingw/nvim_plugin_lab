@@ -5,8 +5,8 @@ services:
     volumes:
       - .:/workspace
     working_dir: /workspace
+    ports:
+      - "8888:8888"
+    command: jupyter notebook --ip=0.0.0.0 --allow-root --no-browser --NotebookApp.token='' --NotebookApp.password=''
     tty: true
     stdin_open: true
-    # 如果你需要将容器的端口映射到宿主机，可以按照下面的格式添加ports配置
-    # ports:
-    #   - "8888:8888" # 例子: 将容器的8888端口映射到宿主机的8888端口
