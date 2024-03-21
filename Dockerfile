@@ -15,8 +15,8 @@ RUN apt-get update && apt-get install -y \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# 安装Jupyter和Neovim的Python客户端
-RUN pip3 install jupyter neovim
+# 安装Neovim的Python客户端
+RUN pip3 install pynvim
 
 # 安装vim-plug插件管理器
 RUN sh -c 'curl -fLo "${XDG_DATA_HOME:-/root/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
