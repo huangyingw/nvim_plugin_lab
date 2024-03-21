@@ -5,22 +5,23 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # 安装Neovim和其它可能需要的依赖
 RUN apt-get update && apt-get install -y \
-    neovim \
-    git \
-    python3 \
-    python3-pip \
-    nodejs \
-    npm \
-    curl && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+        neovim \
+        git \
+        python3 \
+        python3-pip \
+        nodejs \
+        iputils-ping \
+        npm \
+        curl && \
+        apt-get clean && \
+        rm -rf /var/lib/apt/lists/*
 
 # 安装Neovim的Python客户端
 RUN pip3 install pynvim
 
 # 安装vim-plug插件管理器
 RUN sh -c 'curl -fLo "${XDG_DATA_HOME:-/root/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # 设置工作目录
 WORKDIR /workspace
