@@ -1,7 +1,8 @@
 version: '3.8'
+
 services:
-  nvim_plugin_lab:
-    build: .
+  jupyter_notebook:
+    image: jupyter/base-notebook:latest
     volumes:
       - .:/workspace
     working_dir: /workspace
@@ -10,3 +11,21 @@ services:
     command: jupyter notebook --ip=0.0.0.0 --allow-root --no-browser --NotebookApp.token='' --NotebookApp.password=''
     tty: true
     stdin_open: true
+    networks:
+      - nvim-jupyter-network
+
+  nvim_setup:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    tty: true
+    stdin_open: true
+    networks:
+      - nvim-jupyter-network
+
+networks:
+  nvim-jupyter-network:
+    driver: bridge
