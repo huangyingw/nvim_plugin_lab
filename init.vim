@@ -6,4 +6,6 @@ Plug 'jupyter-vim/jupyter-vim'
 " 添加nvim-ipy插件
 Plug 'bfredl/nvim-ipy'
 
+Plug 'benlubas/molten-nvim'
+
 call plug#end()
