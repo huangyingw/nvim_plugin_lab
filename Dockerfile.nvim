@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
         rm -rf /var/lib/apt/lists/*
 
 # 安装Neovim的Python客户端
-RUN pip3 install pynvim
+RUN pip3 install pynvim jupyter_client
 
 # 安装vim-plug插件管理器
 RUN sh -c 'curl -fLo "${XDG_DATA_HOME:-/root/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -30,7 +30,7 @@ WORKDIR /workspace
 COPY init.vim /root/.config/nvim/init.vim
 
 # 使用nvim的headless模式自动安装插件
-RUN nvim --headless +PlugInstall +qall
+RUN nvim --headless +PlugInstall +UpdateRemotePlugins +qall
 
 # 启动时打开bash
 CMD ["/bin/bash"]
